@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyVault | คลังสรุปบทเรียน ม.5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,"Noto Sans Thai",sans-serif;background:#f7faff;color:#18243a;line-height:1.6}
+header{background:#ffffff;color:#183b66;padding:18px 7%;position:sticky;top:0;z-index:10;box-shadow:0 3px 16px #183b6614;border-bottom:3px solid #e7f0fb}
+nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-size:25px;font-weight:800}
+.logo span{opacity:.8;font-size:13px;display:block;font-weight:400}
+nav a{color:#315a83;text-decoration:none;margin-left:18px;font-weight:600}
+.hero{max-width:1100px;margin:50px auto;padding:0 24px}
+.hero h1{font-size:42px;line-height:1.2;margin-bottom:12px;color:#183b66}
+.hero p{color:#667085;max-width:700px}
+.search{margin-top:25px;display:flex;gap:10px;background:#fff;padding:8px;border-radius:17px;box-shadow:0 7px 25px #183b6612}
+.search input{flex:1;padding:16px 18px;border:1px solid #d9e5f2;border-radius:12px;font-size:16px;outline:none}
+.search button{padding:0 24px;border:0;border-radius:12px;background:#2f6fae;color:#fff;font-weight:700;cursor:pointer}
+section{max-width:1100px;margin:35px auto;padding:0 24px}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:white;border:1px solid #dfeaf5;border-radius:18px;padding:22px;box-shadow:0 5px 18px #183b6608;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 25px #17203315}
+.icon{font-size:34px;margin-bottom:8px}
+.card h3{margin-bottom:5px}
+.card p{color:#667085;font-size:14px}
+.badge{display:inline-block;margin-top:12px;background:#eaf4fc;color:#286395;border-radius:999px;padding:4px 10px;font-size:12px}
+.results{margin-top:20px}
+.hidden{display:none}
+#content{min-height:200px}
+.lesson{background:white;border-radius:20px;padding:28px;border:1px solid #e7eaf1}
+.lesson h2{margin-bottom:8px}
+.lesson ul{margin:14px 0 0 22px}
+.back{border:0;background:#eaf4fc;color:#286395;padding:9px 14px;border-radius:10px;cursor:pointer;margin-bottom:15px}
+footer{text-align:center;color:#667085;padding:45px 20px}
+@media(max-width:650px){.hero h1{font-size:32px}nav{flex-direction:column;align-items:flex-start}.search button{padding:0 16px}nav div:last-child{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo">📚 StudyVault <span>คลังสรุปบทเรียนออนไลน์ • ม.5</span></div>
+<div><a href="#subjects">รายวิชา</a><a href="#about">เกี่ยวกับ</a></div>
+</nav>
+</header>
+
+<main>
+<div class="hero">
+<h1>คลังสรุปบทเรียน<br>สำหรับนักเรียน ม.5</h1>
+<p>รวมสรุปบทเรียน สูตรสำคัญ เทคนิคการจำ และเอกสารประกอบการเรียนไว้ในที่เดียว<br>จัดหมวดหมู่เป็นระบบ ค้นหาได้ง่าย และเข้าถึงได้สะดวก</p>
+<div class="search">
+<input id="searchInput" placeholder="🔎 ค้นหาวิชา หรือชื่อบทเรียน..." oninput="searchLessons()">
+<button onclick="searchLessons()">ค้นหา</button>
+</div>
+<div id="results" class="results hidden"></div>
+</div>
+
+<section id="subjects">
+<div class="section-title"><h2>📚 รายวิชา</h2><span>เลือกวิชาที่ต้องการ</span></div>
+<div class="grid">
+<div class="card" onclick="showSubject('คณิตศาสตร์')"><div class="icon">📐</div><h3>คณิตศาสตร์</h3><p>สูตร แนวคิด และโจทย์สำคัญ</p><span class="badge">เร็ว ๆ นี้</span></div>
+<div class="card" onclick="showSubject('ฟิสิกส์')"><div class="icon">⚡</div><h3>ฟิสิกส์</h3><p>สรุปหลักการ สูตร และการคำนวณ</p><span class="badge">เร็ว ๆ นี้</span></div>
+<div class="card" onclick="showSubject('เคมี')"><div class="icon">🧪</div><h3>เคมี</h3><p>สูตร สมการ และเทคนิคทำโจทย์</p><span class="badge">เร็ว ๆ นี้</span></div>
+<div class="card" onclick="showSubject('ชีววิทยา')"><div class="icon">🧬</div><h3>ชีววิทยา</h3><p>สรุปเนื้อหาและคำศัพท์สำคัญ</p><span class="badge">เร็ว ๆ นี้</span></div>
+<div class="card" onclick="showSubject('ภาษาไทย')"><div class="icon">📖</div><h3>ภาษาไทย</h3><p>หลักภาษา วรรณคดี และการวิเคราะห์</p><span class="badge">เร็ว ๆ นี้</span></div>
+<div class="card" onclick="showSubject('ภาษาอังกฤษ')"><div class="icon">🌐</div><h3>ภาษาอังกฤษ</h3><p>Grammar, Vocabulary และ Reading</p><span class="badge">เร็ว ๆ นี้</span></div>
+</div>
+</section>
+
+<section id="content" class="hidden"></section>
+
+<section id="about">
+<div class="section-title"><h2>ℹ️ เกี่ยวกับระบบ</h2></div>
+<div class="lesson">
+<p>StudyVault เป็นต้นแบบระบบคลังสรุปบทเรียนออนไลน์สำหรับนักเรียนชั้นมัธยมศึกษาปีที่ 5 พัฒนาขึ้นเพื่อรวบรวมและจัดหมวดหมู่เนื้อหาให้ค้นหาและเข้าถึงได้สะดวกยิ่งขึ้น</p>
+</div>
+</section>
+</main>
+
+<footer>StudyVault • โครงงานระบบคลังสรุปบทเรียนออนไลน์</footer>
+
+<script>
+const lessons = [
+ {subject:"เคมี", title:"อัตราการเกิดปฏิกิริยา", text:"สรุปแนวคิดเรื่องอัตราการเกิดปฏิกิริยา ปัจจัยที่มีผล และการอ่านกราฟ"},
+ {subject:"เคมี", title:"สมดุลเคมี", text:"สรุปสมดุลเคมี ค่าคงที่สมดุล และหลักเลอชาเตอลิเอ"},
+ {subject:"ฟิสิกส์", title:"คลื่น", text:"สรุปความยาวคลื่น ความถี่ อัตราเร็ว และสมการพื้นฐาน"},
+ {subject:"ชีววิทยา", title:"การสังเคราะห์ด้วยแสง", text:"สรุปปฏิกิริยาใช้แสง วัฏจักรคาลวิน และปัจจัยที่เกี่ยวข้อง"},
+ {subject:"คณิตศาสตร์", title:"เมทริกซ์", text:"สรุปการดำเนินการของเมทริกซ์และการแก้ระบบสมการ"},
+ {subject:"ภาษาอังกฤษ", title:"Grammar", text:"สรุปโครงสร้างประโยคและหลักไวยากรณ์ที่สำคัญ"}
+];
+
+function searchLessons(){
+ const q=document.getElementById("searchInput").value.trim().toLowerCase();
+ const box=document.getElementById("results");
+ if(!q){box.classList.add("hidden");box.innerHTML="";return}
+ const found=lessons.filter(x=>(x.subject+" "+x.title+" "+x.text).toLowerCase().includes(q));
+ box.classList.remove("hidden");
+ box.innerHTML=found.length
+ ? `<h3>ผลการค้นหา (${found.length})</h3><div class="grid" style="margin-top:12px">${found.map(x=>`<div class="card" onclick="showLesson('${x.subject}','${x.title}','${x.text}')"><div class="icon">📝</div><h3>${x.title}</h3><p>${x.subject} • ${x.text}</p></div>`).join("")}</div>`
+ : "<div class='lesson'>ไม่พบเนื้อหาที่ค้นหา ลองใช้คำค้นอื่น</div>";
+}
+
+function showSubject(subject){
+ const data=lessons.filter(x=>x.subject===subject);
+ const sec=document.getElementById("content");
+ sec.classList.remove("hidden");
+ sec.innerHTML=`<button class="back" onclick="document.getElementById('content').classList.add('hidden')">← กลับ</button>
+ <div class="section-title"><h2>${subject}</h2></div>
+ <div class="grid">${data.length?data.map(x=>`<div class="card" onclick="showLesson('${x.subject}','${x.title}','${x.text}')"><div class="icon">📝</div><h3>${x.title}</h3><p>${x.text}</p></div>`).join(""):"<div class='lesson'>ยังไม่มีบทเรียนในหมวดนี้</div>"}</div>`;
+ sec.scrollIntoView({behavior:"smooth"});
+}
+function showLesson(subject,title,text){
+ const sec=document.getElementById("content");
+ sec.classList.remove("hidden");
+ sec.innerHTML=`<button class="back" onclick="showSubject('${subject}')">← กลับไป ${subject}</button>
+ <div class="lesson"><span class="badge">${subject}</span><h2 style="margin-top:12px">${title}</h2>
+ <p>${text}</p><hr style="margin:20px 0;border:0;border-top:1px solid #eee">
+ <h3>📌 เนื้อหาสรุป</h3><p style="margin-top:8px">พื้นที่สำหรับใส่เนื้อหาจริงของบทเรียน สามารถเพิ่มสูตร เทคนิคจำ ตัวอย่างโจทย์ รูปภาพ หรือไฟล์ PDF ได้ในขั้นต่อไป</p>
+ <ul><li>หัวข้อสำคัญของบทเรียน</li><li>สูตรหรือคำศัพท์ที่ควรจำ</li><li>ตัวอย่างการประยุกต์ใช้</li></ul></div>`;
+ sec.scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
